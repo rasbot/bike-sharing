@@ -36,15 +36,21 @@ I would focus on tuning hyperparameters for models outside of using autogluon. I
 
 Reporting hyperparameters is difficult due to how autogluon will try to optimize them. Also, the highest performing models will change due to hyperparameter tuning so getting exact values is not meaningful to compare. For instance, if I am comparing two autogluon runs where one has a LGBM model as the best model, and the other a KNN...which hyperparameters do I compare? I could compare how the individual models performed, like comparing LGBM models for each run. But that won't relate to the scores provided. Again, the next steps for this project would be to not use autogluon and tune hyperparameters for specific models, or use autogluon but limit the model selection to only the few top performing models. That being said, it seems more meaningful to mention the hyperparameter values I have given autogluon and how those compare to the kaggle scores.
 
-|model|num_boost_round (GBM)|num_leaves (GBM)|num_epochs (NN)|score|
+|model|hpo1|hpo2|hpo3|score|
 |--|--|--|--|--|
-|initial|default values|default values|default values|1.38089|
-|add_features|default values|default values|default values|0.56142|
-|hpo|100|ag.space.Int(lower=26, upper=66, default=36)|10|0.5076|
+|initial|default values|default values|default values|1.37882|
+|add_features|default values|default values|default values|0.51509|
+|hpo|NN 'num_epochs': 10, 'learning_rate': ag.space.Real(1e-4, 1e-2, default=5e-4, log=True), 'activation': ag.space.Categorical('relu', 'softrelu', 'tanh'), 'layers': ag.space.Categorical([100], [1000], [200, 100], [300, 200, 100]), 'dropout_prob': ag.space.Real(0.0, 0.5, default=0.1)|GBM 'num_boost_round': 100, 'num_leaves': ag.space.Int(lower=26, upper=66, default=36)|default vals|0.50827|
 
 ### Create a line plot showing the top model score for the three (or more) training runs during the project.
 
+#### Model train score
+
 ![model_train_score.png](img/model_train_score.png)
+
+#### Model validation score
+
+![model_train_score.png](img/model_val_score.png)
 
 ### Create a line plot showing the top kaggle score for the three (or more) prediction submissions during the project.
 
