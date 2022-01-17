@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# autogluon data
+./project/data/run_1/
+./project/data/run_2/
+./project/data/run_3/
+./project/data/run_4/
+./project/data/run_5/
